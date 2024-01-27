@@ -12,11 +12,13 @@ function InputMessage() {
           <HiFaceSmile />
         </Icon>
       </Button>
+
       <div className="flex flex-col w-full gap-1">
         <Input placeholder="Username" />
         <Input placeholder="Type a message" />
       </div>
-      <Button className="hover:text-green-500">
+
+      <Button className="hover:text-emerald-500">
         <Icon className="text-2xl">
           <BsFillSendFill />
         </Icon>

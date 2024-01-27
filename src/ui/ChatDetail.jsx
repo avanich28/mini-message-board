@@ -1,21 +1,34 @@
-import Message from "./Message";
+import { useEffect, useState } from "react";
+import { botMessage } from "../utils/constants";
+import MessageLists from "./MessageLists";
 
-function ChatDetail({ data = true }) {
+// { data = true, isLoading = false } // NOTE use Provider!
+function ChatDetail({ filterDateData, isLoading = false }) {
+  const [data, setData] = useState([]);
+
+  // Demo
+  useEffect(function () {
+    fetch("http://localhost:9000/messages")
+      .then((res) => res.json())
+      .then((data) => setData(data));
+  }, []);
+
   return (
     <main className="bg-zinc-900 text-zinc-50 h-full py-3 flex flex-col gap-3 overflow-y-auto">
-      <Message name="Botty" message="Welcome to my chat room!" profile={true} />
-      {!data && (
+      <MessageLists data={botMessage} />
+
+      {/* spinner */}
+      {isLoading && (
         <div className="flex justify-end">
           <span className="loading loading-dots loading-lg"></span>
         </div>
       )}
-      {data && (
+
+      {data.length > 0 && (
         <>
-          <Message name="Job" message="Happy" />
-          <Message
-            name="Joy"
-            message="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea facere, illo ipsum, ducimus praesentium reprehenderit nisi atque facilis consequuntur dolore et magni asperiores tenetur officia molestiae fugiat nemo suscipit quas."
-          />
+          {/* filterDateData.map(data => <MessageLists data={data}/>) */}
+          <MessageLists data={data} />
+          <MessageLists data={data} />
         </>
       )}
     </main>
