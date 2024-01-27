@@ -1,9 +1,6 @@
-function Button({ children, className }) {
-  function click() {
-    alert("hello react");
-  }
+function Button({ children, className, onClick }) {
   return (
-    <button className={`transition-all ${className}`} onClick={click}>
+    <button className={`transition-all ${className}`} onClick={onClick}>
       {children}
     </button>
   );

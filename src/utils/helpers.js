@@ -7,3 +7,12 @@ export const formatDate = function (date) {
 export const formatTime = function (date) {
   return format(date, "kk:mm");
 };
+
+export const getEmoji = function (code) {
+  const symbol = code.split("-");
+  const codesArray = [];
+  symbol.forEach((el) => codesArray.push("0x" + el));
+  const emojiHexCode = String.fromCodePoint(...codesArray);
+
+  return emojiHexCode;
+};

@@ -4,7 +4,7 @@ import InputMessage from "./InputMessage";
 
 function MessageBoard() {
   return (
-    <main className="h-full mt-7 mb-3 w-full max-w-[600px] flex flex-col justify-between rounded-2xl overflow-hidden [&>*]:px-4">
+    <main className="mt-2 w-full max-w-[600px] flex flex-col justify-between [&>*]:px-4 h-full min-h-0">
       <ChatRoomName />
       <ChatDetail />
       <InputMessage />

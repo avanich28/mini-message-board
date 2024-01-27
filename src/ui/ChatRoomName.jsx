@@ -6,7 +6,7 @@ import ImageBox from "./ImageBox";
 
 function ChatRoomName() {
   return (
-    <header className="py-2 bg-zinc-600 text-zinc-50 flex items-center gap-5">
+    <header className="py-2 bg-zinc-600 text-zinc-50 flex items-center gap-5 rounded-t-2xl">
       <ImageBox src={jsLogo} alt="Javascript" type="primary" />
 
       <h1 className="font-semibold tracking-wider text-xl">Chit Chat Group</h1>
