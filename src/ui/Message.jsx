@@ -13,7 +13,7 @@ function Message({ name, message, profile = false }) {
         >
           <p
             className={`chat-bubble ${
-              profile || "chat-bubble-success"
+              profile || "bg-emerald-600"
             } text-zinc-50`}
           >
             {message}

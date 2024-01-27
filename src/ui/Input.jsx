@@ -1,12 +1,11 @@
-function Input({ type = "text", placeholder, style = "primary" }) {
-  const defaultStyles = {
-    primary: "px-2 py-1 text-zinc-50",
-  };
+function Input({ type = "text", placeholder, required = true }) {
   return (
     <input
       type={type}
       placeholder={placeholder}
-      className={`appearance-none ${defaultStyles[style]}`}
+      className={`appearance-none input input-ghost input-bordered w-full`}
+      style={{ color: "whitesmoke" }}
+      required={required}
     />
   );
 }

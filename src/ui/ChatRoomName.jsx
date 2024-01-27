@@ -11,8 +11,8 @@ function ChatRoomName() {
 
       <h1 className="font-semibold tracking-wider text-xl">Chit Chat Group</h1>
 
-      <Button className="ml-auto hover:text-green-500">
-        <Icon className="text-2xl">
+      <Button className="ml-auto hover:text-emerald-500 hover:animate-shake">
+        <Icon className="text-3xl">
           <BsFillTelephoneFill />
         </Icon>
       </Button>
