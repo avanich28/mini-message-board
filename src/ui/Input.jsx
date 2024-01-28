@@ -1,11 +1,24 @@
-function Input({ type = "text", placeholder, onChange, required = true }) {
+function Input({
+  type = "text",
+  onChange,
+  value,
+  placeholder,
+  required = true,
+  style = "primary",
+  textColor = "initial",
+}) {
+  const defaultStyles = {
+    primary: "appearance-none input input-ghost input-bordered w-full",
+  };
+
   return (
     <input
       type={type}
       placeholder={placeholder}
       onChange={onChange}
-      className={`appearance-none input input-ghost input-bordered w-full`}
-      style={{ color: "whitesmoke" }}
+      value={value}
+      className={defaultStyles[style]}
+      style={{ color: textColor }}
       required={required}
     />
   );

@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { botMessage } from "../utils/constants";
+
 import MessageLists from "./MessageLists";
 
-// { data = true, isLoading = false } // NOTE use React Query, Provider!
+// { data = true, isLoading = false } // NOTE use React Query, Provider, RTK!
 function ChatDetail({ filterDateData, isLoading = false }) {
   const [data, setData] = useState([]);
 
@@ -14,7 +15,7 @@ function ChatDetail({ filterDateData, isLoading = false }) {
   }, []);
 
   return (
-    <main className="bg-zinc-900 text-zinc-50 py-3 flex flex-col gap-3 overflow-y-auto">
+    <main className="bg-zinc-900 text-zinc-50 py-3 flex flex-col gap-3 overflow-y-auto min-h-[310px]">
       <MessageLists data={botMessage} />
 
       {/* spinner */}
