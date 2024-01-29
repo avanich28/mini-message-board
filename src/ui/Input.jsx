@@ -1,9 +1,9 @@
 function Input({
   type = "text",
+  name,
   onChange,
   value,
   placeholder,
-  required = true,
   style = "primary",
   textColor = "initial",
 }) {
@@ -14,12 +14,12 @@ function Input({
   return (
     <input
       type={type}
-      placeholder={placeholder}
+      name={name}
       onChange={onChange}
       value={value}
+      placeholder={placeholder}
       className={defaultStyles[style]}
       style={{ color: textColor }}
-      required={required}
     />
   );
 }

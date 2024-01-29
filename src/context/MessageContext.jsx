@@ -3,38 +3,53 @@ import { createMessage } from "../services/apiMessage";
 
 const MessageContext = createContext();
 
+const defaultInputs = {
+  name: "",
+  message: "",
+};
+
 function MessageProvider({ children }) {
-  const [name, setName] = useState("");
-  const [message, setMessage] = useState("");
+  const [inputs, setInputs] = useState(defaultInputs);
   const [openEmoji, setOpenEmoji] = useState(false);
+  const [fieldName, setFieldName] = useState("");
 
-  function addName(e) {
-    setName(e.target.value);
-  }
-
-  function addMessage(e) {
-    setMessage(e.target.value);
+  function addInput(e) {
+    const { name, value } = e.target;
+    setFieldName("");
+    setInputs((obj) => ({ ...obj, [name]: value }));
   }
 
   function addEmoji(e) {
-    setMessage((msg) => msg + e.native);
+    setFieldName("");
+    setInputs((obj) => ({ ...obj, message: obj.message + e.native }));
     setOpenEmoji(false);
   }
 
   function toggleEmojiPicker(e) {
     e.stopPropagation();
+    setFieldName("");
     setOpenEmoji((isOpen) => !isOpen);
   }
 
-  function sendMessage() {
+  function sendMessage(e) {
+    e.preventDefault();
+    const { name, message } = inputs;
+
+    if (!name || !message) {
+      const keys = Object.keys(inputs).filter((key) => inputs[key] === "");
+      const str = keys.length > 1 ? "all" : keys[0];
+
+      return setFieldName(str);
+    }
+
     const data = {
       name,
       message,
       date: new Date(),
     };
 
-    setName("");
-    setMessage("");
+    setFieldName("");
+    setInputs(defaultInputs);
 
     createMessage(data);
   }
@@ -42,14 +57,13 @@ function MessageProvider({ children }) {
   return (
     <MessageContext.Provider
       value={{
-        name,
-        message,
+        inputs,
         openEmoji,
-        addName,
-        addMessage,
+        addInput,
         addEmoji,
         toggleEmojiPicker,
         sendMessage,
+        fieldName,
       }}
     >
       {children}

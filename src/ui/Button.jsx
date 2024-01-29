@@ -1,6 +1,10 @@
-function Button({ children, className, onClick }) {
+function Button({ children, className, onClick, type }) {
   return (
-    <button className={`transition-all ${className}`} onClick={onClick}>
+    <button
+      className={`transition-all ${className}`}
+      onClick={onClick}
+      type={type}
+    >
       {children}
     </button>
   );

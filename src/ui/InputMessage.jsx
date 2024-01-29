@@ -6,49 +6,69 @@ import { useMessage } from "../context/MessageContext";
 import Icon from "./Icon";
 import Button from "./Button";
 import Input from "./Input";
+import ErrorInput from "./ErrorInput";
 
 function InputMessage() {
   const {
-    name,
-    message,
+    inputs: { name, message } = {},
     openEmoji,
-    addName,
-    addMessage,
+    addInput,
     addEmoji,
     toggleEmojiPicker,
     sendMessage,
+    fieldName,
   } = useMessage();
 
   return (
-    <footer className="flex justify-between items-end bg-zinc-600 text-zinc-50 py-2 gap-3 relative rounded-b-2xl [&>button]:mb-2">
+    <footer className="bg-zinc-600 text-zinc-50 py-2 relative rounded-b-2xl">
       {openEmoji && (
         <ColorPicker
-          autoFocus={true}
           onClickOutside={toggleEmojiPicker}
           onEmojiSelect={addEmoji}
         />
       )}
 
-      <Button className="hover:text-amber-300" onClick={toggleEmojiPicker}>
-        <Icon className="text-3xl">
-          <HiFaceSmile />
-        </Icon>
-      </Button>
+      {fieldName && <ErrorInput fieldName={fieldName} />}
 
-      <div className="flex flex-col w-full gap-1">
-        <Input onChange={addName} value={name} placeholder="Username" />
-        <Input
-          onChange={addMessage}
-          value={message}
-          placeholder="Type a message"
-        />
-      </div>
+      <form
+        onSubmit={sendMessage}
+        className="flex justify-between items-end gap-3 [&>button]:mb-2"
+      >
+        <Button
+          className="hover:text-amber-300"
+          onClick={toggleEmojiPicker}
+          type="button"
+        >
+          <Icon className="text-3xl">
+            <HiFaceSmile />
+          </Icon>
+        </Button>
 
-      <Button className="hover:text-emerald-500" onClick={sendMessage}>
-        <Icon className="text-2xl">
-          <BsFillSendFill />
-        </Icon>
-      </Button>
+        <div className="flex flex-col w-full gap-1">
+          <Input
+            name="name"
+            onChange={addInput}
+            value={name}
+            placeholder="Username"
+          />
+          <Input
+            name="message"
+            onChange={addInput}
+            value={message}
+            placeholder="Type a message"
+          />
+        </div>
+
+        <Button
+          className="hover:text-emerald-500"
+          onClick={sendMessage}
+          type="submit"
+        >
+          <Icon className="text-2xl">
+            <BsFillSendFill />
+          </Icon>
+        </Button>
+      </form>
     </footer>
   );
 }

@@ -3,7 +3,7 @@ import Picker from "@emoji-mart/react";
 
 function ColorPicker({ onClickOutside, onEmojiSelect }) {
   return (
-    <div className="absolute bottom-[20px]">
+    <div className="absolute bottom-[18px]">
       <Picker
         data={data}
         theme="light"
