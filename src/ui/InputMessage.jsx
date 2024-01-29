@@ -6,7 +6,7 @@ import { useMessage } from "../context/MessageContext";
 import Icon from "./Icon";
 import Button from "./Button";
 import Input from "./Input";
-import ErrorInput from "./ErrorInput";
+import InputError from "./InputError";
 
 function InputMessage() {
   const {
@@ -28,7 +28,7 @@ function InputMessage() {
         />
       )}
 
-      {fieldName && <ErrorInput fieldName={fieldName} />}
+      {fieldName && <InputError fieldName={fieldName} />}
 
       <form
         onSubmit={sendMessage}

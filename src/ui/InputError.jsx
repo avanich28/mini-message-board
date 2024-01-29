@@ -1,4 +1,4 @@
-function ErrorInput({ fieldName }) {
+function InputError({ fieldName }) {
   return (
     <div className="absolute top-[-40px] w-full left-0 flex justify-center">
       <div className="text-sm py-1 pl-3 pr-4 flex items-center gap-2 justify-center bg-red-500 w-max rounded-lg animate-warning">
@@ -23,4 +23,4 @@ function ErrorInput({ fieldName }) {
   );
 }
 
-export default ErrorInput;
+export default InputError;
