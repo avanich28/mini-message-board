@@ -4,8 +4,8 @@ import { createMessage } from "../services/apiMessage";
 const MessageContext = createContext();
 
 const defaultInputs = {
-  name: "",
-  message: "",
+  user: "",
+  text: "",
 };
 
 function MessageProvider({ children }) {
@@ -21,7 +21,7 @@ function MessageProvider({ children }) {
 
   function addEmoji(e) {
     setFieldName("");
-    setInputs((obj) => ({ ...obj, message: obj.message + e.native }));
+    setInputs((obj) => ({ ...obj, text: obj.text + e.native }));
     setOpenEmoji(false);
   }
 
@@ -33,9 +33,9 @@ function MessageProvider({ children }) {
 
   function sendMessage(e) {
     e.preventDefault();
-    const { name, message } = inputs;
+    const { user, text } = inputs;
 
-    if (!name || !message) {
+    if (!user || !text) {
       const keys = Object.keys(inputs).filter((key) => inputs[key] === "");
       const str = keys.length > 1 ? "all" : keys[0];
 
@@ -43,10 +43,12 @@ function MessageProvider({ children }) {
     }
 
     const data = {
-      name,
-      message,
+      user,
+      text,
       date: new Date(),
     };
+
+    console.log(data);
 
     setFieldName("");
     setInputs(defaultInputs);

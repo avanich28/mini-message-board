@@ -10,7 +10,7 @@ import InputError from "./InputError";
 
 function InputMessage() {
   const {
-    inputs: { name, message } = {},
+    inputs: { user, text } = {},
     openEmoji,
     addInput,
     addEmoji,
@@ -46,15 +46,15 @@ function InputMessage() {
 
         <div className="flex flex-col w-full gap-1">
           <Input
-            name="name"
+            name="user"
             onChange={addInput}
-            value={name}
+            value={user}
             placeholder="Username"
           />
           <Input
-            name="message"
+            name="text"
             onChange={addInput}
-            value={message}
+            value={text}
             placeholder="Type a message"
           />
         </div>
