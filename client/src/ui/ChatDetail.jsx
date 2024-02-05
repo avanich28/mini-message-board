@@ -2,10 +2,14 @@ import { useEffect, useState } from "react";
 import { botMessage } from "../utils/constants";
 
 import MessageLists from "./MessageLists";
+import { useMessages } from "../hooks/useMessages";
 
 // { data = true, isLoading = false } // NOTE use React Query, Provider, RTK!
 function ChatDetail({ filterDateData, isLoading = false }) {
+  // const { data: test } = useMessages();
   const [data, setData] = useState([]);
+
+  // console.log(test);
 
   // Demo
   useEffect(function () {

@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 
 const messageSchema = new mongoose.Schema({
-  name: {
+  user: {
     type: String,
     required: [true, "Please fill name field!"],
     trim: true,
   },
-  message: {
+  text: {
     type: String,
     required: [true],
     trim: true,
