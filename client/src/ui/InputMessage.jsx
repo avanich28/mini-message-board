@@ -17,6 +17,7 @@ function InputMessage() {
     toggleEmojiPicker,
     sendMessage,
     fieldName,
+    isCreating,
   } = useMessage();
 
   return (
@@ -63,6 +64,7 @@ function InputMessage() {
           className="hover:text-emerald-500"
           onClick={sendMessage}
           type="submit"
+          disabled={isCreating}
         >
           <Icon className="text-2xl">
             <BsFillSendFill />

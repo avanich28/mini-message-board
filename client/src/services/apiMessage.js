@@ -2,14 +2,12 @@ import { API_URL } from "../utils/constants";
 
 export async function getAllMessages() {
   const res = await fetch(`${API_URL}`);
-  // if (res.status === "failed") throw Error("Failed getting menu");
-  // console.log(res);
-  const data = await res.json();
-  console.log(data);
+  if (!res.ok) throw Error("Failed getting messages");
 
-  return data;
+  const data = await res.json();
+
+  return data.data.allMessages;
 }
-getAllMessages();
 
 export async function createMessage(newMessage) {
   try {
@@ -20,5 +18,9 @@ export async function createMessage(newMessage) {
         "Content-Type": "application/json",
       },
     });
-  } catch (err) {}
+
+    if (!res.ok) throw Error();
+  } catch (err) {
+    throw Error("Failed creating your message");
+  }
 }

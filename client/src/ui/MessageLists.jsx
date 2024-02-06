@@ -2,7 +2,8 @@ import { formatDate } from "../utils/helpers";
 import Message from "./Message";
 
 function MessageLists({ data }) {
-  const date = formatDate(data[0].date);
+  const { _id, messages } = data;
+  const date = formatDate(_id);
 
   return (
     <div>
@@ -10,13 +11,13 @@ function MessageLists({ data }) {
         {date}
       </h3>
       <ul className="flex flex-col">
-        {data.map((chat) => (
+        {messages.map((msg) => (
           <Message
-            key={chat.date}
-            name={chat.name}
-            message={chat.message}
-            date={chat.date}
-            profile={chat?.profile}
+            key={msg.user}
+            user={msg.user}
+            text={msg.text}
+            date={msg.date}
+            profile={msg?.profile}
           />
         ))}
       </ul>

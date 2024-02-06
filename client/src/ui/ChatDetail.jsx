@@ -1,41 +1,26 @@
-import { useEffect, useState } from "react";
 import { botMessage } from "../utils/constants";
+import { useMessages } from "../hooks/useMessages";
+import { useMessage } from "../context/MessageContext";
 
 import MessageLists from "./MessageLists";
-import { useMessages } from "../hooks/useMessages";
+import Spinner from "./Spinner";
 
-// { data = true, isLoading = false } // NOTE use React Query, Provider, RTK!
-function ChatDetail({ filterDateData, isLoading = false }) {
-  // const { data: test } = useMessages();
-  const [data, setData] = useState([]);
-
-  // console.log(test);
-
-  // Demo
-  useEffect(function () {
-    fetch("http://localhost:9000/messages")
-      .then((res) => res.json())
-      .then((data) => setData(data));
-  }, []);
+// NOTE use React Query, Provider, RTK!
+function ChatDetail() {
+  const { data, isLoading, error } = useMessages();
+  const { isCreating } = useMessage();
 
   return (
     <main className="bg-zinc-900 text-zinc-50 py-3 flex flex-col gap-3 overflow-y-auto min-h-[310px]">
       <MessageLists data={botMessage} />
 
-      {/* spinner */}
-      {isLoading && (
-        <div className="flex justify-end">
-          <span className="loading loading-dots loading-lg"></span>
-        </div>
-      )}
+      {isLoading && <Spinner />}
 
-      {data.length > 0 && (
-        <>
-          {/* filterDateData.map(data => <MessageLists data={data}/>) */}
-          <MessageLists data={data} />
-          <MessageLists data={data} />
-        </>
-      )}
+      {!isLoading &&
+        data.length > 0 &&
+        data.map((msg) => <MessageLists key={msg._id} data={msg} />)}
+
+      {isCreating && <Spinner />}
     </main>
   );
 }

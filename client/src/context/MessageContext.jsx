@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { createMessage } from "../services/apiMessage";
+import { useCreateMessage } from "../hooks/useCreateMessage";
 
 const MessageContext = createContext();
 
@@ -12,6 +12,7 @@ function MessageProvider({ children }) {
   const [inputs, setInputs] = useState(defaultInputs);
   const [openEmoji, setOpenEmoji] = useState(false);
   const [fieldName, setFieldName] = useState("");
+  const { createMessage, isCreating } = useCreateMessage();
 
   function addInput(e) {
     const { name, value } = e.target;
@@ -48,8 +49,6 @@ function MessageProvider({ children }) {
       date: new Date(),
     };
 
-    console.log(data);
-
     setFieldName("");
     setInputs(defaultInputs);
 
@@ -66,6 +65,7 @@ function MessageProvider({ children }) {
         toggleEmojiPicker,
         sendMessage,
         fieldName,
+        isCreating,
       }}
     >
       {children}

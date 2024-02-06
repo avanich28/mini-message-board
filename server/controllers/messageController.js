@@ -9,18 +9,19 @@ exports.getAllMessages = async (req, res, next) => {
             $dateToString: { format: "%Y-%m-%d", date: "$createdAt" },
           },
           count: { $sum: 1 },
-          messages: { $push: { text: "$text", date: "$createdAt" } },
+          messages: {
+            $push: { user: "$user", text: "$text", date: "$createdAt" },
+          },
         },
       },
     ]).sort({ _id: 1 });
-    console.log(messages);
 
     res.status(200).json({
       status: "success",
       requestedAt: req.requestTime,
       results: messages.length,
       data: {
-        messages,
+        allMessages: messages,
       },
     });
   } catch (err) {

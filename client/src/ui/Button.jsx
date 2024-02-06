@@ -1,9 +1,12 @@
-function Button({ children, className, onClick, type }) {
+function Button({ children, className, onClick, type, disabled = false }) {
   return (
     <button
-      className={`transition-all ${className}`}
+      className={`transition-all ${className} ${
+        disabled ? "cursor-not-allowed hover:text-inherit" : ""
+      }`}
       onClick={onClick}
       type={type}
+      disabled={disabled}
     >
       {children}
     </button>
