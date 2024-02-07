@@ -4,23 +4,32 @@ import { useMessage } from "../context/MessageContext";
 
 import MessageLists from "./MessageLists";
 import Spinner from "./Spinner";
+import Error from "./Error";
 
 // NOTE use React Query, Provider, RTK!
 function ChatDetail() {
   const { data, isLoading, error } = useMessages();
   const { isCreating } = useMessage();
 
+  // if (error) return <Error error={error} />;
+
   return (
     <main className="bg-zinc-900 text-zinc-50 py-3 flex flex-col gap-3 overflow-y-auto min-h-[310px]">
-      <MessageLists data={botMessage} />
+      {error ? (
+        <Error error={error} />
+      ) : (
+        <>
+          {!isLoading && <MessageLists data={botMessage} />}
 
-      {isLoading && <Spinner />}
+          {isLoading && <Spinner />}
 
-      {!isLoading &&
-        data.length > 0 &&
-        data.map((msg) => <MessageLists key={msg._id} data={msg} />)}
+          {!isLoading &&
+            data.length > 0 &&
+            data.map((msg) => <MessageLists key={msg._id} data={msg} />)}
 
-      {isCreating && <Spinner />}
+          {isCreating && <Spinner />}
+        </>
+      )}
     </main>
   );
 }

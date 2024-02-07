@@ -2,7 +2,7 @@ import { API_URL } from "../utils/constants";
 
 export async function getAllMessages() {
   const res = await fetch(`${API_URL}`);
-  if (!res.ok) throw Error("Failed getting messages");
+  if (!res.ok) throw new Error("Failed getting messages");
 
   const data = await res.json();
 
@@ -19,7 +19,7 @@ export async function createMessage(newMessage) {
       },
     });
 
-    if (!res.ok) throw Error();
+    if (!res.ok) throw new Error("Failed creating your message");
   } catch (err) {
     throw Error("Failed creating your message");
   }
