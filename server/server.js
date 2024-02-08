@@ -16,9 +16,12 @@ mongoose.connect(DB).then(() => {
 });
 
 const port = process.env.PORT || 3000;
-const server = app.listen(port, () => {
-  console.log(`App running on port: http://localhost:${port}`);
-});
+const server = app.listen(
+  "https://mini-message-board-55v75hbws-jobs-projects-957cdab4.vercel.app/",
+  () => {
+    console.log(`App running on port: http://localhost:${port}`);
+  }
+);
 
 process.on("unhandledRejection", (err) => {
   console.log("UNHANDLED REJECTION: 💥 Shutting down...");
