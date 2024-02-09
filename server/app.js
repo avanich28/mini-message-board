@@ -16,9 +16,10 @@ if (process.env.NODE_ENV === "development") {
 
 app.use(
   cors({
-    origin: ["https://mini-message-board-virid.vercel.app/"],
+    origin: true,
     methods: ["GET", "POST"],
     credentials: true,
+    exposedHeaders: "*",
   })
 );
 app.use(express.json({ limit: "10kb" }));
