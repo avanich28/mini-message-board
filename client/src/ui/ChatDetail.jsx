@@ -11,25 +11,19 @@ function ChatDetail() {
   const { data, isLoading, error } = useMessages();
   const { isCreating } = useMessage();
 
-  // if (error) return <Error error={error} />;
-
   return (
     <main className="bg-zinc-900 text-zinc-50 py-3 flex flex-col gap-3 overflow-y-auto min-h-[310px]">
-      {error ? (
-        <Error error={error} />
-      ) : (
-        <>
-          {!isLoading && <MessageLists data={botMessage} />}
+      <MessageLists data={botMessage} />
 
-          {isLoading && <Spinner />}
+      {error && <Error error={error} />}
 
-          {!isLoading &&
-            data.length > 0 &&
-            data.map((msg) => <MessageLists key={msg._id} data={msg} />)}
+      {isLoading && <Spinner />}
 
-          {isCreating && <Spinner />}
-        </>
-      )}
+      {!isLoading &&
+        data.length > 0 &&
+        data.map((msg) => <MessageLists key={msg._id} data={msg} />)}
+
+      {isCreating && <Spinner />}
     </main>
   );
 }
