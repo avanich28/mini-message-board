@@ -10,4 +10,5 @@ export const botMessage = {
   ],
 };
 
-export const API_URL = "http://127.0.0.1:8000/api/v1/message-board";
+export const API_URL =
+  "https://mini-message-board-api.vercel.app/api/v1/message-board";
