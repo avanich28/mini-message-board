@@ -16,6 +16,7 @@ export async function getAllMessages() {
 export async function createMessage(newMessage) {
   try {
     const res = await fetch(API_URL, {
+      mode: "no-cors",
       method: "POST",
       body: JSON.stringify(newMessage),
       headers: {
