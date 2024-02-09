@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === "development") {
 
 app.use(
   cors({
-    origin: ["https://mini-message-board-virid.vercel.app/"],
+    origin: ["https://mini-message-board-virid.vercel.app"],
     methods: ["GET", "POST"],
     credentials: true,
   })
