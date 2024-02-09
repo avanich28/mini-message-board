@@ -9,8 +9,8 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
       <MessageProvider>
-        <ReactQueryDevtools initialIsOpen={false} />
         <AppLayout />
         <Toaster
           position="top-center"

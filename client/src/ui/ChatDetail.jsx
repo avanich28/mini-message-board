@@ -19,7 +19,8 @@ function ChatDetail() {
 
       {isLoading && <Spinner />}
 
-      {!isLoading &&
+      {!error &&
+        !isLoading &&
         data.length > 0 &&
         data.map((msg) => <MessageLists key={msg._id} data={msg} />)}
 
