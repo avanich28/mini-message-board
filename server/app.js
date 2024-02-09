@@ -10,9 +10,21 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "https://mini-message-board-bb5y9rw8q-jobs-projects-957cdab4.vercel.app/",
+    ],
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
 app.use(express.json({ limit: "10kb" }));
 app.use(xss());
+
+app.get("/", (req, res) => {
+  res.json("Hello");
+});
 
 app.use("/api/v1/message-board", messageRouter);
 
