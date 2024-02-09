@@ -2,7 +2,7 @@ import { API_URL } from "../utils/constants";
 
 export async function getAllMessages() {
   try {
-    const res = await fetch(API_URL, { mode: "no-cors" });
+    const res = await fetch(API_URL);
     if (!res.ok) throw new Error("Failed getting messages");
 
     const data = await res.json();
@@ -16,7 +16,6 @@ export async function getAllMessages() {
 export async function createMessage(newMessage) {
   try {
     const res = await fetch(API_URL, {
-      mode: "no-cors",
       method: "POST",
       body: JSON.stringify(newMessage),
       headers: {
