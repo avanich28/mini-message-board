@@ -1,14 +1,16 @@
 import { API_URL } from "../utils/constants";
 
 export async function getAllMessages() {
-  const res = await fetch(API_URL, { mode: "no-cors" });
-  if (!res.ok) throw new Error("Failed getting messages");
-  console.log(res);
+  try {
+    const res = await fetch(API_URL, { mode: "no-cors" });
+    if (!res.ok) throw new Error("Failed getting messages");
 
-  const data = await res.json();
-  console.log(data);
+    const data = await res.json();
 
-  return data.data.allMessages;
+    return data.data.allMessages;
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 export async function createMessage(newMessage) {
