@@ -15,10 +15,14 @@ export async function getAllMessages() {
 
 export async function createMessage(newMessage) {
   try {
+    const test = {
+      user: "Papa",
+      text: "test",
+    };
     const res = await fetch(API_URL, {
       mode: "no-cors",
       method: "POST",
-      body: JSON.stringify(newMessage),
+      body: JSON.stringify(test),
       headers: {
         "Content-Type": "application/json",
       },
