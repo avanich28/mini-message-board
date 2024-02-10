@@ -15,14 +15,9 @@ export async function getAllMessages() {
 
 export async function createMessage(newMessage) {
   try {
-    const test = {
-      user: "Papa",
-      text: "test",
-    };
     const res = await fetch(API_URL, {
-      mode: "no-cors",
       method: "POST",
-      body: JSON.stringify(test),
+      body: JSON.stringify(newMessage),
       headers: {
         "Content-Type": "application/json",
       },
@@ -30,6 +25,6 @@ export async function createMessage(newMessage) {
 
     if (!res.ok) throw new Error("Failed creating your message");
   } catch (err) {
-    throw Error("Failed creating your message");
+    console.error(err);
   }
 }
