@@ -6,7 +6,7 @@ export function useCreateMessage() {
   const queryClient = useQueryClient();
 
   const { mutate: createMessage, isLoading: isCreating } = useMutation({
-    mutationFn: createMessageAPI,
+    mutationFn: (newMessage) => createMessageAPI(newMessage),
     onSuccess: () => {
       toast.success("A message is successfully sent.");
       queryClient.invalidateQueries({ queryKey: ["messages"] });
