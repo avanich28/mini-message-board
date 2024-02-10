@@ -14,13 +14,14 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
-const corsOpts = {
-  origin: "*",
-  methods: ["GET", "POST"],
-  allowedHeaders: ["Content-Type"],
-};
+// const corsOpts = {
+//   origin: "*",
+//   methods: ["GET", "POST"],
+//   allowedHeaders: ["Content-Type"],
+// };
 
-app.use(cors(corsOpts));
+// app.use(cors(corsOpts));
+app.use(cors());
 app.use(express.json({ limit: "10kb" }));
 app.use(xss());
 
