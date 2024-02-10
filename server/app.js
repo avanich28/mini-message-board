@@ -21,14 +21,13 @@ if (process.env.NODE_ENV === "development") {
 // };
 
 // app.use(cors(corsOpts));
-// app.use((req, res, next) => {
-//   res.setHeader("Access-Control-Allow-Origin", "*");
-//   res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
-//   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-//   next();
-// });
 app.use(express.json({ limit: "10kb" }));
-app.use(cors({ origin: "https://mini-message-board-virid.vercel.app" }));
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  next();
+});
 // app.options("/api/v1/message-board", cors());
 // app.use(cors({ origin: true }));
 app.use(xss());
