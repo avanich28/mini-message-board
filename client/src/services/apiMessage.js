@@ -21,7 +21,6 @@ export async function createMessage(newMessage) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newMessage),
-      mode: "no-cors",
     });
     if (!res.ok) throw new Error("Failed creating your message");
 
