@@ -31,6 +31,7 @@ app.use(express.json());
 // app.options("/api/v1/message-board", cors());
 // app.use(cors({ origin: true }));
 app.use(cors());
+app.options("*", cors());
 app.use(xss());
 
 app.use("/api/v1/message-board", messageRouter);
