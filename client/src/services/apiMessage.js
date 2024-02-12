@@ -27,6 +27,6 @@ export async function createMessage(newMessage) {
     const data = await res.json();
     return data;
   } catch (err) {
-    console.error(err);
+    throw new Error("Failed to post message");
   }
 }
