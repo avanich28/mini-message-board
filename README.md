@@ -4,5 +4,5 @@ A mini message board allows users to leave and view messages in the board that h
 
 ## Tech Stack
 
-<strong>Client:</strong> React and Tailwind
+<strong>Client:</strong> React and Tailwind <br/>
 <strong>Server:</strong> Node.js, Express, MongoDB
