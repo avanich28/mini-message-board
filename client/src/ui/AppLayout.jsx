@@ -13,7 +13,7 @@ function AppLayout() {
   }
 
   return (
-    <div className="flex flex-col items-center pb-5 pt-16 bg-neutral-50 px-5 text-zinc-900 h-screen min-h-[600px] gap-2">
+    <div className="flex flex-col items-center pb-5 pt-16 px-5 text-zinc-900  gap-2">
       {showConfetti && <ConfettiExplosion className="absolute" />}
       <Header />
       <MessageBoard onClick={handleConfentti} />
